@@ -8,6 +8,8 @@ use yii\widgets\ActiveForm;
 
 <?= $form->field($model, 'email')->label('Ваш e-mail') ?>
 
+<?= $form->field($model, 'captcha')->widget(\yii\captcha\Captcha::classname(), [  ])->label('Введите символы с картинки:') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
     </div>

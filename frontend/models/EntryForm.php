@@ -8,12 +8,14 @@ class EntryForm extends Model
 {
     public $name;
     public $email;
+    public $captcha;
 
     public function rules()
     {
         return [
-            [['name', 'email'], 'required'],
+            [['name', 'email', 'captcha'], 'required'],
             ['email', 'email'],
+            ['captcha','captcha'],
         ];
     }
 }
