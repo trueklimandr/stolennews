@@ -2,7 +2,9 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+use yii\helpers\Url;
+
+$this->title = (Yii::$app->name).'.Новости';
 ?>
 <div class="site-index">
 
@@ -46,6 +48,20 @@ $this->title = 'My Yii Application';
                     fugiat nulla pariatur.</p>
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            </div>
+            <div class="col-lg-4">
+                <h2></h2>
+
+                <p></p>
+
+            </div>
+            <div class="col-lg-4">
+                <h2>Newpage</h2>
+
+                <p>Открыв newpage, ты познаешь все тайны, о которых только мечтал, и даже те, о существовании которых
+                даже и не мечтал. Так нажми же кнопку, мой дорогой друг!</p>
+
+                <p><a class="btn btn-info" href="<?= Url::to(['site/page', 'view' => 'newpage'])?>">Newpage &raquo;</a></p>
             </div>
         </div>
 
