@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'defaultRoute' => 'site',//можно заменить, чтобы индекс направлял в другое место
+    'defaultRoute' => 'news',//можно заменить, чтобы индекс направлял в другое место
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [

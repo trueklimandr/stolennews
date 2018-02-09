@@ -3,6 +3,10 @@ body {
     height: 100%;
 }
 
+.grey-ground {
+    background-color: #f0f1f1
+}
+
 .wrap {
     min-height: 100%;
     height: auto;

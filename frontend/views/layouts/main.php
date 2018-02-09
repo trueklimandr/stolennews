@@ -47,7 +47,7 @@ AppAsset::register($this);
                 'items' => [
                     [
                         'label' => 'Главная',
-                        'url' => ['/site/index']
+                        'url' => ['/news']
                     ],
                     [
                         'label' => 'О нас',
@@ -73,7 +73,6 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
