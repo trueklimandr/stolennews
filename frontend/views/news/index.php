@@ -5,6 +5,7 @@ $this->title = (Yii::$app->name).'.Новости';
 <div class="site-index">
     <div class="body-content">
         <div class="row">
+            <div class="col-lg-12">
             <div class="row text-danger">
                 <h1 class="text-center"><?= Yii::$app->i18n->messageFormatter->format(
                         '{count, number} {count, plural, one{лучшая самая свежая интересная новость.} '.
@@ -33,6 +34,7 @@ $this->title = (Yii::$app->name).'.Новости';
                 </div>
 
             <?php }?>
+            </div>
         </div>
     </div>
 </div>

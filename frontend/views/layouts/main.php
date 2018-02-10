@@ -36,27 +36,10 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems[] = '<li>'
-        . ButtonDropdown::widget([
-            'label' => ($this->title === (Yii::$app->name).'.Новости') ? 'Главная' : $this->title,
-            'options' => [
-                'class' => 'btn-mg btn-default',
-                'style' => 'margin:10px'
-            ],
-            'dropdown' => [
-                'items' => [
-                    [
-                        'label' => 'Главная',
-                        'url' => ['/news/index']
-                    ],
-                    [
-                        'label' => 'О нас',
-                        'url' => ['/site/about']
-                    ]
-                ]
-            ]
-        ] )
-        . '</li>';
+    $menuItems = [
+        ['label' => 'Главная', 'url' => ['/news/index']],
+        ['label' => 'О нас', 'url' => ['/site/about']],
+    ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
