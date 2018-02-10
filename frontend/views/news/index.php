@@ -1,15 +1,18 @@
 <?php
 
-use yii\helpers\Url;
-
 $this->title = (Yii::$app->name).'.Новости';
 ?>
 <div class="site-index">
     <div class="body-content">
         <div class="row">
             <div class="row text-danger">
-                <h1 class="text-center"><?= count($news)
-                    ?> лучших самых свежих интересных новостей.<small> От Яндекса.</small></h1>
+                <h1 class="text-center"><?= Yii::$app->i18n->messageFormatter->format(
+                        '{count, number} {count, plural, one{лучшая самая свежая интересная новость.} '.
+                        'few{лучших самых свежих интересных новости.} other{лучших самых свежих интересных новостей.}}',
+                        ['count' => count($news)],
+                        Yii::$app->language
+                    );
+                    ?> <small> От Яндекса.</small></h1>
             </div>
                 <?php for ($i = 0; $i <= count($news)-1; $i++) {?>
 

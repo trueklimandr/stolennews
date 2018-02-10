@@ -47,7 +47,7 @@ AppAsset::register($this);
                 'items' => [
                     [
                         'label' => 'Главная',
-                        'url' => ['/news']
+                        'url' => ['/news/index']
                     ],
                     [
                         'label' => 'О нас',

@@ -10,6 +10,7 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'defaultRoute' => 'news',//можно заменить, чтобы индекс направлял в другое место
+    'language' => 'ru-RU',//язык
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
