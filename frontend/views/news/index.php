@@ -16,23 +16,26 @@ $this->title = (Yii::$app->name).'.Новости';
                     ?> <small> От Яндекса.</small></h1>
             </div>
                 <?php for ($i = 0; $i <= count($news)-1; $i++) {?>
-
+                    <?php if ($i%2 == 0) echo '<div class="row">'?>
                 <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="row">
                         <h3><a style="color:black; font-weight: bold" href='<?= $news[$i]->url?>'><?= $news[$i]->title?></a></h3>
                         <h4 class="text-info"><?= '&#171;'. $news[$i]->rubric .'&#187;'?></h4>
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="<?= $news[$i]->imgpath?>" class="img-responsive" alt="Responsive image">
+                                <img src="<?= $news[$i]->imgpath?>" class="img-responsive" alt="News image">
                             </div>
                             <div class="col-lg-8">
                                 <p><?= $news[$i]->body?></p>
-                                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Docum &raquo;</a></p>
                             </div>
                         </div>
+                        <p class="text-muted">Обновлено в <?= Yii::$app->formatter->asTime($news[$i]->time, 'HH:mm')
+                            ?>, (<?= Yii::$app->formatter->asDate($news[$i]->date)?>)</p>
                     </div>
                 </div>
-
+                </div>
+                    <?php if ($i%2 !== 0) echo '</div>'?>
             <?php }?>
             </div>
         </div>

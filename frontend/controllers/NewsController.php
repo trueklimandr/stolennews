@@ -14,7 +14,10 @@ class NewsController extends Controller
     public function actionIndex()
     {
         $news = News::find()->orderBy('id')->all();
-        if (count($news)==0) {
+        if (count($news) == 0) {
+            $this->saveNews($this->stealNews($this->getUrlsOfNews()));
+        } elseif ($news[0]['date'] != date('Y-m-d')) {
+            News::deleteAll();
             $this->saveNews($this->stealNews($this->getUrlsOfNews()));
         }
         $news = News::find()->orderBy('id')->all();
