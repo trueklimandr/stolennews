@@ -2,6 +2,15 @@ html,
 body {
     height: 100%;
 }
+.bodynews {
+    width: 100%;
+    height: 250px;
+}
+
+.news-link {
+    color:black;
+    font-weight: bold;
+}
 
 .wrap {
     min-height: 100%;

@@ -20,7 +20,7 @@ $this->title = (Yii::$app->name).'.Новости';
                 <div class="col-lg-6">
                 <div class="col-lg-12">
                     <div class="row">
-                        <h3><a style="color:black; font-weight: bold" href='<?= $news[$i]->url?>'><?= $news[$i]->title?></a></h3>
+                        <h3><a class="news-link" href='<?= $news[$i]->url?>'><?= $news[$i]->title?></a></h3>
                         <h4 class="text-info"><?= '&#171;'. $news[$i]->rubric .'&#187;'?></h4>
                         <div class="row">
                             <div class="col-lg-4">
