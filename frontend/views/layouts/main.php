@@ -40,6 +40,16 @@ AppAsset::register($this);
         ['label' => 'Главная', 'url' => ['/news/index']],
         ['label' => 'О нас', 'url' => ['/site/about']],
     ];
+    if (!Yii::$app->user->isGuest) {
+        $menuItems[] = '<li>'
+            . Html::beginForm(['/site/logout'], 'post')
+            . Html::submitButton(
+                'Выйти (' . Yii::$app->user->identity->username . ')',
+                ['class' => 'btn btn-link logout']
+            )
+            . Html::endForm()
+            . '</li>';
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
