@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use yii\web\Controller;
-use frontend\models\News;
+use common\models\News;
 
 class NewsController extends Controller
 {
