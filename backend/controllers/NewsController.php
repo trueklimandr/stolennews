@@ -16,7 +16,7 @@ class NewsController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index', 'refresh'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -35,6 +35,16 @@ class NewsController extends Controller
      */
     public function actionIndex()
     {
+        $news = News::find()->orderBy('id')->all();
+        return $this->render('index', ['news' => $news]);
+    }
+    /**
+     * Открывает страницу refresh (отличается от индекса обязательным обновлением новостей).
+     */
+    public function actionRefresh()
+    {
+        News::deleteAll();
+        $this->saveNews($this->stealNews($this->getUrlsOfNews()));
         $news = News::find()->orderBy('id')->all();
         return $this->render('index', ['news' => $news]);
     }
