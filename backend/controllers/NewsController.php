@@ -16,7 +16,7 @@ class NewsController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'refresh'],
+                        'actions' => ['index', 'refresh', 'edit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -47,6 +47,14 @@ class NewsController extends Controller
         $this->saveNews($this->stealNews($this->getUrlsOfNews()));
         $news = News::find()->orderBy('id')->all();
         return $this->render('index', ['news' => $news]);
+    }
+    /**
+     * Открывает страницу редактирования новости.
+     */
+    public function actionEdit()
+    {
+        $news = News::find()->orderBy('id')->all();
+        return $this->render('edit', ['news' => $news]);
     }
     /**
      * Сохранение новостей из яндекса в БД.

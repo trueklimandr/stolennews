@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\BaseUrl;
+use yii\helpers\Html;
 
 $this->title = (Yii::$app->name).'.Новости';
 ?>
@@ -34,6 +35,9 @@ $this->title = (Yii::$app->name).'.Новости';
                                 <p><?= $news[$i]->body?></p>
                             </div>
                         </div>
+
+                        <?= Html::a('Редактировать', ['create'], ['class' => 'btn btn-success']) ?>
+
                         <p class="text-muted">Обновлено в <?= Yii::$app->formatter->asTime($news[$i]->time, 'HH:mm') ?>,
                             (<?= Yii::$app->formatter->asDate($news[$i]->date)?>)</p>
                     </div>
