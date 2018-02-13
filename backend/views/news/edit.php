@@ -5,10 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $news common\models\News */
 
-$this->title = 'Update Country: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $news->name, 'url' => ['view', 'id' => $news->code]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = "Редактируем новость № $news->id: \"$news->title\"";
 ?>
 
 <div class="news-update">

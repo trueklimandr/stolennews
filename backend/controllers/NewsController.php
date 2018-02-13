@@ -6,6 +6,8 @@ use yii\web\Controller;
 use common\models\News;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use Yii;
+use yii\web\NotFoundHttpException;
 
 class NewsController extends Controller
 {
@@ -35,8 +37,13 @@ class NewsController extends Controller
      */
     public function actionIndex()
     {
-        $news = News::find()->orderBy('id')->all();
-        return $this->render('index', ['news' => $news]);
+        $news = new News();
+        if ($news->load(Yii::$app->request->post()) && count($news) == 1) {
+            return $this->redirect(['news/edit', 'id' => $news->id]);
+        } else {
+            $news = News::find()->orderBy('id')->all();
+            return $this->render('index', ['news' => $news]);
+        }
     }
     /**
      * Открывает страницу refresh (отличается от индекса обязательным обновлением новостей).
@@ -46,15 +53,28 @@ class NewsController extends Controller
         News::deleteAll();
         $this->saveNews($this->stealNews($this->getUrlsOfNews()));
         $news = News::find()->orderBy('id')->all();
-        return $this->render('index', ['news' => $news]);
+        return $this->redirect(['news/index', 'news' => $news]);
     }
     /**
      * Открывает страницу редактирования новости.
      */
-    public function actionEdit()
+    public function actionEdit($id)
     {
-        $news = News::find()->orderBy('id')->all();
-        return $this->render('edit', ['news' => $news]);
+        $news = $this->findModel($id+1);;
+        if ($news->load(Yii::$app->request->post()) && $news->save()) {
+            $news1 = News::find()->orderBy('id')->all();
+            return $this->redirect(['news/index', 'news' => $news1]);
+        } else {
+            return $this->render('edit', ['news' => $news]);
+        }
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = News::findOne($id)) !== null) {
+            return $model;
+        }
+        throw new NotFoundHttpException('Запрашиваемая страница не существует.');
     }
     /**
      * Сохранение новостей из яндекса в БД.
